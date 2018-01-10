@@ -25,4 +25,7 @@ ENV PATH "/root/miniconda3/bin/:${PATH}"
     
 RUN conda config --set always_yes yes --set changeps1 no
 
+# downloading the conda-latest doesn't guarantee to have the latest conda
+RUN conda update conda
+
 CMD ["/bin/bash"]

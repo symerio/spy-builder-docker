@@ -6,7 +6,7 @@ A docker setup for building Python packages
 To build the linux image,
 ```
 cd linux/
-docker build -t symerio/sym-builder-docker:linux .
+docker build -t symerio/sym-builder:debian .
 ```
 
 
