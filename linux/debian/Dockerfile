@@ -1,4 +1,4 @@
-FROM amd64/debian:wheezy
+FROM amd64/debian:9.3
 
 RUN apt-get update && apt-get install -y locales
 
@@ -21,11 +21,12 @@ RUN echo "dash dash/sh boolean false" | debconf-set-selections && \
 RUN wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
     chmod +x miniconda.sh && ./miniconda.sh -b && rm -r ./miniconda.sh
 
+
 ENV PATH "/root/miniconda3/bin/:${PATH}"
-    
-RUN conda config --set always_yes yes --set changeps1 no
 
 # downloading the conda-latest doesn't guarantee to have the latest conda
-RUN conda update conda
+RUN conda update -y conda
+
+RUN conda config --set always_yes yes --set changeps1 no
 
 CMD ["/bin/bash"]
